@@ -26,8 +26,8 @@ CAMINHO_PDF = "projeto_lei.pdf"
 texto_lei = ler_pdf(CAMINHO_PDF)
 paragrafos = [p.strip() for p in texto_lei.split("\n") if p.strip()]
 
-# Modelo de embeddings
-modelo = SentenceTransformer("all-MiniLM-L6-v2")
+# Modelo de embeddings MAIS LEVE para consumir menos memória
+modelo = SentenceTransformer("paraphrase-MiniLM-L3-v2")
 embeddings_texto = modelo.encode(paragrafos, convert_to_tensor=True)
 
 @app.route("/webhook", methods=["POST"])
